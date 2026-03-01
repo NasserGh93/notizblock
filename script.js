@@ -6,15 +6,13 @@ function renderNotes() {
     contentRef.innerHTML = "";
 
     for (let indexNote = 0; indexNote < notes.length; indexNote++) {
-        const note = notes[indexNote];
-        contentRef.innerHTML += getNoteTamplate(note);
+        contentRef.innerHTML += getNoteTamplate(indexNote);
     }
 
 }
-function getNoteTamplate(note) {
-    return `<p>+ ${note}</p>`;
+function getNoteTamplate(indexNote) {
+    return `<p>+ ${notes[indexNote]}<button onclick="deleteNote(${indexNote})">x</button></p>`;
 }
-//Add notes
 function addNote() {
     let noteInputRef = document.getElementById('note_input');
     let noteInput = noteInputRef.value;
@@ -24,10 +22,14 @@ function addNote() {
 
     noteInputRef.value = "";
 }
+//Delete notes
+//welche notitz muss gelöscht werden
+//wann muss die notitz gelöscht werden
+// anzeige updaten
+function deleteNote(indexNote) {
+    notes.splice(indexNote, 1);
+    renderNotes();
 
-
-
-
-
+}
 //Delete notes
 //Archive notes
