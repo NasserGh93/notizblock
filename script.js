@@ -2,7 +2,8 @@
 let notesTitle = ['ba', 'Aufgabe',];
 let notes = ['banana', 'rasen mähen', 'rasieren'];
 
-let trashNotes = []
+let trashNotesnotesTitle = [];
+let trashNotes = [];
 
 function renderNotes() {
     let contentRef = document.getElementById('content')
@@ -24,11 +25,11 @@ function renderTrashNotes() {
 
 }
 function getNoteTamplate(indexNote) {
-    return `<p>+ title: ${notesTitle[indexNote]} -> <button onclick="deleteNote(${indexNote})">x</button></p>`;
+    return `<p>+ title: ${notesTitles[indexNote]} -> <button onclick="deleteNote(${indexNote})">x</button></p>`;
 }
 
 function getTrashNoteTamplate(indexTrashNote) {
-    return `<p>+ ${trashNotes[indexNote]}<button onclick="deleteNote(${indexNote})">x</button></p>`;
+    return `<p>+ ${trashNotes[indexNote]}<button onclick="deleteNote(${indexTrashNote})">x</button></p>`;
 }
 
 function addNote() {
@@ -40,10 +41,7 @@ function addNote() {
 
     noteInputRef.value = "";
 }
-//Delete notes
-//welche notitz muss gelöscht werden
-//wann muss die notitz gelöscht werden
-// anzeige updaten
+
 function deleteNote(indexNote) {
     let trashNote = notes.splice(indexNote, 1);
     trashNotes.push(trashNote);
@@ -51,5 +49,18 @@ function deleteNote(indexNote) {
     renderTrashNotes()
 
 }
-//Delete notes
+
+function notetoTrash() {
+    let trashNote = notes.splice(indexNote, 1);
+    let trashNotesnotesTitle = notes.slice(indexNote, 1)
+    trashNote.push(trashNote);
+
+    renderNotes();
+    renderTrashNotes();
+}
+function deleteNote(indexTrashNote) {
+    trashNotes.splice(indexTrashNote, 1);
+    renderNotes();
+    renderTrashNotes();
+}
 //Archive notes
